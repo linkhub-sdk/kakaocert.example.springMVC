@@ -2,7 +2,7 @@ body { color: #000000; background-color: white; font-family: Verdana; margin: 0p
 p { color: #000000; margin-top: 0px; margin-bottom: 12px; font-family: Verdana; }
 fieldset { margin:0 auto; padding:0; border:1px solid #D5DFE5; }
 ul { margin:0 0 0 20px; padding:10px; }
-li { margin:0; padding:0 0 7px 0; font-size: 12px; color: #333333; }
+li { margin:0; padding:0 0 7px 0; font-size: 12px; color: #333333; word-break: break-all;}
 #content { font-size: 12px; padding: 0 15px 0 15px; }
 .heading1 { color: #ffffff; font-family: Tahoma; font-size: 24px; background-color: #009100; margin: 0 -15px 0 -15px; padding: 10px 15px 7px 15px; width: 100%; }
 .fieldset1 { padding:0 10px 0 10px; margin-bottom: 15px; }
