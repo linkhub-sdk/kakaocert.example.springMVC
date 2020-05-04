@@ -44,7 +44,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19900108");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("01012345117");
@@ -136,7 +136,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19900108");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("01012345117");
@@ -230,7 +230,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19900108");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("01012345117");
