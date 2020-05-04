@@ -242,7 +242,7 @@ public class KakaocertServiceExample {
 		request.setBankAccountName("예금주명");
 		
 		// 계좌번호, 이용기관은 사용자가 식별가능한 범위내에서 계좌번호의 일부를 마스킹 처리할 수 있음 예시) 371-02-6***85
-		request.setBankAccountNum("9-4324-5117-58");
+		request.setBankAccountNum("9-4**4-1234-58");
 		
 		// 은행코드
 		request.setBankCode("004");
