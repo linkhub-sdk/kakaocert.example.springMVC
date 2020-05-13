@@ -40,7 +40,7 @@ public class KakaocertServiceExample {
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-9999");
 		
-		// 인증요청 만료시간(초), 최대값 : 99,999,999,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
+		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
@@ -132,7 +132,7 @@ public class KakaocertServiceExample {
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-9999");
 		
-		// 인증요청 만료시간(초), 최대값 : 99,999,999,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
+		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
@@ -226,7 +226,7 @@ public class KakaocertServiceExample {
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-9999");
 		
-		// 인증요청 만료시간(초), 최대값 : 99,999,999,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
+		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
