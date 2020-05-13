@@ -22,13 +22,7 @@
             	<li>subClientCode (별칭코드) : ${result.subClientCode}</li>
             	<li>state (상태) : ${result.state}</li>
             	<li>signedData (전자서명 데이터 전문) : ${result.signedData}</li>
-            	<li>receiverHP (수신자 휴대폰번호) : ${result.receiverHP}</li>
-            	<li>receiverName (수신자 성명) : ${result.receiverName}</li>
-            	<li>receiverBirthday (수신자 생년월일) : ${result.receiverBirthday}</li>
-            	<li>bankAccountName (예금주명) : ${result.bankAccountName}</li>
-            	<li>bankAccountNum (계좌번호) : ${result.bankAccountNum}</li>
-            	<li>bankCode (은행코드) : ${result.bankCode}</li>
-            	<li>clientUserID (납부자번호) : ${result.clientUserID}</li>
+            	
             	<li>expires_in (인증요청 만료시간(초)	) : ${result.expires_in}</li>
                 <li>callCenterNum(고객센터 전화번호) : ${result.callCenterNum}</li>
                 <li>tmstitle (인증요청 메시지 제목) : ${result.tmstitle}</li>
