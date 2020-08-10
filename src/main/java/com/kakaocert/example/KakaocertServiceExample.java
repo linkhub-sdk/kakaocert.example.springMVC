@@ -44,10 +44,10 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19700101");
+		request.setReceiverBirthDay("19800101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("01012345117");
+		request.setReceiverHP("010111222");
 		
 		// 수신자 성명	
 		request.setReceiverName("테스트");
