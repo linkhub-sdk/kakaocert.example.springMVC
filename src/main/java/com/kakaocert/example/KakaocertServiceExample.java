@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kakaocert.api.KakaocertException;
 import com.kakaocert.api.KakaocertService;
+import com.kakaocert.api.ResponseESign;
 import com.kakaocert.api.cms.RequestCMS;
 import com.kakaocert.api.cms.ResultCMS;
 import com.kakaocert.api.esign.RequestESign;
@@ -36,6 +37,9 @@ public class KakaocertServiceExample {
 		// 전자서명 요청 정보 Object
 		RequestESign request = new RequestESign();
 		
+		// AppToApp 인증요청 여부 
+		// true - AppToApp 인증방식, false - Talk Message 인증방식
+		boolean isAppUseYN = false;
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-9999");
@@ -52,16 +56,18 @@ public class KakaocertServiceExample {
 		// 수신자 성명	
 		request.setReceiverName("테스트");
 		
+		// 인증요청 메시지 제목, 카카오톡 인증메시지 중 "요청구분" 항목에 표시
+		request.setTMSTitle("TMS Title");
+		
 		// 인증요청 메시지 부가내용, 카카오톡 인증메시지 중 상단에 표시
+		// AppToApp 인증요청 방식 이용시 적용되지 않음
 		request.setTMSMessage("부가메시지 내용");
 		
 		// 별칭코드, 이용기관이 생성한 별칭코드 (파트너 사이트에서 확인가능)
 		// 카카오톡 인증메시지 중 "요청기관" 항목에 표시
 		// 별칭코드 미 기재시 이용기관의 이용기관명이 "요청기관" 항목에 표시
+		// AppToApp 인증요청 방식 이용시 적용되지 않음
 		request.setSubClientID("");
-		
-		// 인증요청 메시지 제목, 카카오톡 인증메시지 중 "요청구분" 항목에 표시
-		request.setTMSTitle("TMS Title");
 		
 		// 전자서명 원문
 		request.setToken("token value");
@@ -88,30 +94,52 @@ public class KakaocertServiceExample {
 		
 		try {
 			
-			String receiptID = kakaocertService.requestESign(ClientCode, request);
+			ResponseESign receiptID = kakaocertService.requestESign(ClientCode, request, isAppUseYN);
 			
-			m.addAttribute("Result", receiptID);
+			m.addAttribute("receiptId", receiptID.getReceiptId());
+			m.addAttribute("tx_id", receiptID.getTx_id());
 			
 		} catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
 		}
 		
-		return "result";
-		   
+		return "resultESign";
 	}
 	
 	/*
-     * 간편 전자서명 요청시 반환된 접수아이디를 통해 전자서명 결과를 확인합니다.
+     * [TalkMessage] 전자서명 요청시 반환된 접수아이디를 통해 전자서명 결과를 확인합니다.
      */
 	@RequestMapping(value = "getESignResult", method = RequestMethod.GET)
     public String getESignResult(Model m) {
         
 		// 전자서명 요청시 반환된 접수아이디 
-		String receiptID = "020050412211500001";
+		String receiptID = "020090110130200001";
 
         try {
             ResultESign result = kakaocertService.getESignResult(ClientCode, receiptID);
+            m.addAttribute("result", result);
+        } catch(KakaocertException ke) {
+			m.addAttribute("Exception", ke);
+			return "exception";
+        }
+        return "getESignResult";
+    }
+	
+	/*
+     * [AppToApp] 전자서명 요청시 반환된 접수아이디와 앱스킴 성공시 반환되는 서명값 통해 전자서명 결과를 확인합니다.
+     */
+	@RequestMapping(value = "getESignResultApp", method = RequestMethod.GET)
+    public String getESignResultApp(Model m) {
+        
+		// 전자서명 요청시 반환된 접수아이디 
+		String receiptID = "020090110130200001";
+		
+		// 앱스킴 성공시 반환되는 서명값
+		String signature = "abcd";
+
+        try {
+            ResultESign result = kakaocertService.getESignResult(ClientCode, receiptID, signature);
             m.addAttribute("result", result);
         } catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);

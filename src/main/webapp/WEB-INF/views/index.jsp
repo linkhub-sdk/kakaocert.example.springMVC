@@ -11,10 +11,11 @@
     <p class="heading1">kakaocert SDK SpringMVC Example.</p>
     <br/>
     <fieldset class="fieldset1">
-        <legend>간편 전자서명 API</legend>
+        <legend>전자서명 API</legend>
         <ul>
-            <li><a href="requestESign">requestESign</a> - 간편 전자서명 요청</li>
-            <li><a href="getESignResult">getESignResult</a> - 간편 전자서명 결과확인</li>
+            <li><a href="requestESign">requestESign</a> - 전자서명 요청</li>
+            <li><a href="getESignResult">getESignResult</a> - 전자서명 결과확인 (TalkMessage 방식)</li>
+            <li><a href="getESignResultApp">getESignResult</a> - 전자서명 결과확인 (AppToApp 방식)</li>
         </ul>
     </fieldset>
     <fieldset class="fieldset1">
