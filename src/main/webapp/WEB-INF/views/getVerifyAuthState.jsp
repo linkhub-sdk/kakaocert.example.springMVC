@@ -20,9 +20,8 @@
             	<li>clientName (이용기관명) : ${result.clientName}</li>
             	<li>subClientName (별칭) : ${result.subClientName}</li>
             	<li>subClientCode (별칭코드) : ${result.subClientCode}</li>
-            	<li>state (상태) : ${result.state}</li>
-            	<li>signedData (전자서명 데이터 전문) : ${result.signedData}</li>
-            	
+            	<li>state (상태코드) : ${result.state}</li>
+            	            	
             	<li>expires_in (인증요청 만료시간(초)	) : ${result.expires_in}</li>
                 <li>callCenterNum(고객센터 전화번호) : ${result.callCenterNum}</li>
                 <li>tmstitle (인증요청 메시지 제목) : ${result.tmstitle}</li>

@@ -20,9 +20,7 @@
             	<li>clientName (이용기관명) : ${result.clientName}</li>
             	<li>subClientName (별칭) : ${result.subClientName}</li>
             	<li>subClientCode (별칭코드) : ${result.subClientCode}</li>
-            	<li>state (상태) : ${result.state}</li>
-            	<li>token (원문) : ${result.token}</li>
-            	<li>signedData (전자서명 데이터 전문) : ${result.signedData}</li>
+            	<li>state (상태코드) : ${result.state}</li>
             	
             	<li>expires_in (인증요청 만료시간(초)	) : ${result.expires_in}</li>
                 <li>callCenterNum(고객센터 전화번호) : ${result.callCenterNum}</li>
@@ -37,8 +35,6 @@
                 <li>completeDT (수신자 카카오톡 전자서명 완료일시	) : ${result.completeDT}</li>
                 <li>verifyDT (서명 검증일시) : ${result.verifyDT}</li>
                 <li>payload (payload) : ${result.payload}</li>
-                <li>appUseYN (AppToApp 인증여부) : ${result.appUseYN}</li>
-                <li>tx_id (카카오톡 트랜잭션아이디-앱스킴 호출용) : ${result.tx_id}</li>
             </ul>
         </fieldset>
         

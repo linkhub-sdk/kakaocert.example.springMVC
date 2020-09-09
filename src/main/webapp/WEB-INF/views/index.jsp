@@ -14,22 +14,26 @@
         <legend>전자서명 API</legend>
         <ul>
             <li><a href="requestESign">requestESign</a> - 전자서명 요청</li>
-            <li><a href="getESignResult">getESignResult</a> - 전자서명 결과확인 (TalkMessage 방식)</li>
-            <li><a href="getESignResultApp">getESignResult</a> - 전자서명 결과확인 (AppToApp 방식)</li>
+            <li><a href="getESignState">getESignState</a> - 전자서명 서명상태 확인</li>
+            <li><a href="verifyESign">verifyESign</a> - 전자서명 서명검증 (Talk Message 인증)</li>
+            <li><a href="verifyESignApp">verifyESign</a> - 전자서명 서명검증 (App to App 인증)</li>
+            
         </ul>
     </fieldset>
     <fieldset class="fieldset1">
         <legend>본인인증 API</legend>
         <ul>
             <li><a href="requestVerifyAuth">requestVerifyAuth</a> - 본인인증 요청</li>
-            <li><a href="getVerifyAuthResult">getVerifyAuthResult</a> - 본인인증 결과확인</li>
+            <li><a href="getVerifyAuthState">getVerifyAuthState</a> - 본인인증 서명상태 확인</li>
+            <li><a href="verifyAuth">verifyAuth</a> - 본인인증 서명검증</li>
         </ul>
     </fieldset>
     <fieldset class="fieldset1">
         <legend>자동이체 출금동의 API</legend>
         <ul>
             <li><a href="requestCMS">requestCMS</a> - 자동이체 출금동의 요청</li>
-            <li><a href="getCMSResult">getCMSResult</a> - 자동이체 출금동의 결과확인</li>
+            <li><a href="getCMSState">getCMSState</a> - 자동이체 출금동의 서명상태 확인</li>
+            <li><a href="verifyCMS">verifyCMS</a> - 자동이체 출금동의 서명검증</li>
         </ul>
     </fieldset>
 </div>

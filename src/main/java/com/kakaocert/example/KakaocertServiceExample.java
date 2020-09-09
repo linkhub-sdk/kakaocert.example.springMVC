@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.kakaocert.api.KakaocertException;
 import com.kakaocert.api.KakaocertService;
 import com.kakaocert.api.ResponseESign;
+import com.kakaocert.api.VerifyResult;
 import com.kakaocert.api.cms.RequestCMS;
 import com.kakaocert.api.cms.ResultCMS;
 import com.kakaocert.api.esign.RequestESign;
@@ -48,13 +49,13 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19800101");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("010111222");
 		
 		// 수신자 성명	
-		request.setReceiverName("테스트");
+		request.setReceiverName("홍길동");
 		
 		// 인증요청 메시지 제목, 카카오톡 인증메시지 중 "요청구분" 항목에 표시
 		request.setTMSTitle("TMS Title");
@@ -108,45 +109,65 @@ public class KakaocertServiceExample {
 	}
 	
 	/*
-     * [TalkMessage] 전자서명 요청시 반환된 접수아이디를 통해 전자서명 결과를 확인합니다.
+     * 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
      */
-	@RequestMapping(value = "getESignResult", method = RequestMethod.GET)
+	@RequestMapping(value = "getESignState", method = RequestMethod.GET)
     public String getESignResult(Model m) {
         
 		// 전자서명 요청시 반환된 접수아이디 
-		String receiptID = "020090110130200001";
+		String receiptID = "020090915342900001";
 
         try {
-            ResultESign result = kakaocertService.getESignResult(ClientCode, receiptID);
+            ResultESign result = kakaocertService.getESignState(ClientCode, receiptID);
             m.addAttribute("result", result);
         } catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
         }
-        return "getESignResult";
+        return "getESignState";
     }
 	
 	/*
-     * [AppToApp] 전자서명 요청시 반환된 접수아이디와 앱스킴 성공시 반환되는 서명값 통해 전자서명 결과를 확인합니다.
+     * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
      */
-	@RequestMapping(value = "getESignResultApp", method = RequestMethod.GET)
-    public String getESignResultApp(Model m) {
+	@RequestMapping(value = "verifyESign", method = RequestMethod.GET)
+    public String verfiyESign(Model m) {
         
 		// 전자서명 요청시 반환된 접수아이디 
-		String receiptID = "020090110130200001";
-		
-		// 앱스킴 성공시 반환되는 서명값
-		String signature = "abcd";
+		String receiptID = "020090915342900001";
 
         try {
-            ResultESign result = kakaocertService.getESignResult(ClientCode, receiptID, signature);
+            VerifyResult result = kakaocertService.verifyESign(ClientCode, receiptID);
             m.addAttribute("result", result);
         } catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
         }
-        return "getESignResult";
+        return "responseVerify";
     }
+	
+	/*
+     * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     */
+	@RequestMapping(value = "verifyESignApp", method = RequestMethod.GET)
+    public String verfiyESignApp(Model m) {
+        
+		// 전자서명 요청시 반환된 접수아이디 
+		String receiptID = "020090915342900001";
+		
+		// AppToApp 앱스킴 성공처리시 반환되는 서명값(iOS-sig, Android-signature)
+		String signature = "abc";
+
+        try {
+            VerifyResult result = kakaocertService.verifyESign(ClientCode, receiptID, signature);
+            m.addAttribute("result", result);
+        } catch(KakaocertException ke) {
+			m.addAttribute("Exception", ke);
+			return "exception";
+        }
+        return "responseVerify";
+    }
+	
 	
 	/*
 	 * 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
@@ -167,10 +188,10 @@ public class KakaocertServiceExample {
 		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("01012345117");
+		request.setReceiverHP("010111222");
 		
 		// 수신자 성명	
-		request.setReceiverName("테스트");
+		request.setReceiverName("홍길동");
 		
 		// 인증요청 메시지 부가내용, 카카오톡 인증메시지 중 상단에 표시
 		request.setTMSMessage("부가메시지 내용");
@@ -224,22 +245,41 @@ public class KakaocertServiceExample {
 	}
 	
 	/*
-     * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 결과를 확인합니다.
+     * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명 상태를 확인합니다.
      */
-	@RequestMapping(value = "getVerifyAuthResult", method = RequestMethod.GET)
-    public String getVerifyAuthResult(Model m) {
+	@RequestMapping(value = "getVerifyAuthState", method = RequestMethod.GET)
+    public String getVerifyAuthState(Model m) {
         
 		// 본인인증 요청시 반환된 접수아이디 
-		String receiptID = "020050413311700001";
+		String receiptID = "020090915411700001";
 
         try {
-            ResultVerifyAuth result = kakaocertService.getVerifyAuthResult(ClientCode, receiptID);
+            ResultVerifyAuth result = kakaocertService.getVerifyAuthState(ClientCode, receiptID);
             m.addAttribute("result", result);
         } catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
         }
-        return "getVerifyAuthResult";
+        return "getVerifyAuthState";
+    }
+	
+	/*
+     * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다.
+     */
+	@RequestMapping(value = "verifyAuth", method = RequestMethod.GET)
+    public String verifyAuth(Model m) {
+        
+		// 본인인증 요청시 반환된 접수아이디 
+		String receiptID = "020090915411700001";
+
+        try {
+            VerifyResult result = kakaocertService.verifyAuth(ClientCode, receiptID);
+            m.addAttribute("result", result);
+        } catch(KakaocertException ke) {
+			m.addAttribute("Exception", ke);
+			return "exception";
+        }
+        return "responseVerify";
     }
 	
 	/*
@@ -261,10 +301,10 @@ public class KakaocertServiceExample {
 		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("01012345117");
+		request.setReceiverHP("010111222");
 		
 		// 수신자 성명	
-		request.setReceiverName("테스트");
+		request.setReceiverName("홍길동");
 		
 		// 예금주명
 		request.setBankAccountName("예금주명");
@@ -325,21 +365,40 @@ public class KakaocertServiceExample {
 	}
 	
 	/*
-     * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 전자서명 결과를 확인합니다.
+     * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
      */
-	@RequestMapping(value = "getCMSResult", method = RequestMethod.GET)
-    public String getCMSResult(Model m) {
+	@RequestMapping(value = "getCMSState", method = RequestMethod.GET)
+    public String getCMSState(Model m) {
         
 		// 출금동의 요청시 반환된 접수아이디 
-		String receiptID = "020050414231900001";
+		String receiptID = "020090915424200001";
 
         try {
-            ResultCMS result = kakaocertService.getCMSResult(ClientCode, receiptID);
+            ResultCMS result = kakaocertService.getCMSState(ClientCode, receiptID);
             m.addAttribute("result", result);
         } catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
         }
-        return "getCMSResult";
+        return "getCMSState";
+    }
+	
+	/*
+     * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     */
+	@RequestMapping(value = "verifyCMS", method = RequestMethod.GET)
+    public String verifyCMS(Model m) {
+        
+		// 출금동의 요청시 반환된 접수아이디 
+		String receiptID = "020090915424200001";
+
+        try {
+            VerifyResult result = kakaocertService.verifyCMS(ClientCode, receiptID);
+            m.addAttribute("result", result);
+        } catch(KakaocertException ke) {
+			m.addAttribute("Exception", ke);
+			return "exception";
+        }
+        return "responseVerify";
     }
 }

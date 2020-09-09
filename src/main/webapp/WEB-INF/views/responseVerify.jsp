@@ -8,13 +8,13 @@
 </head>
 <body>
 <div id="content">
-    <p class="heading1">State</p>
+    <p class="heading1">Verify</p>
     <br/>
     <fieldset class="fieldset1">
         <legend>${requestScope['javax.servlet.forward.request_uri']}</legend>
         <ul>
-            <li>receiptId (접수아이디) : ${receiptId}</li>
-            <li>tx_id (카카오톡 트랜잭션아이디[AppToApp 앱스킴 호출용]) : ${tx_id}</li>
+            <li>receiptId (접수아이디) : ${result.receiptId}</li>
+            <li>signedData (전자서명 데이터 전문) : ${result.signedData}</li>
         </ul>
     </fieldset>
 </div>

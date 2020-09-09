@@ -13,7 +13,7 @@
     <fieldset class="fieldset1">
         <legend>${requestScope['javax.servlet.forward.request_uri']}</legend>
         <ul>
-            <li>Result : ${Result}</li>
+            <li>접수아이디(receiptId) : ${Result}</li>
         </ul>
     </fieldset>
 </div>
