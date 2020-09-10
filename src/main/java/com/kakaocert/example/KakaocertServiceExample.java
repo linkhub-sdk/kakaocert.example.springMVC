@@ -128,7 +128,8 @@ public class KakaocertServiceExample {
     }
 	
 	/*
-     * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * [Talk Message] 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
      */
 	@RequestMapping(value = "verifyESign", method = RequestMethod.GET)
     public String verfiyESign(Model m) {
@@ -147,7 +148,8 @@ public class KakaocertServiceExample {
     }
 	
 	/*
-     * 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * [App to App] 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
      */
 	@RequestMapping(value = "verifyESignApp", method = RequestMethod.GET)
     public String verfiyESignApp(Model m) {
@@ -245,7 +247,7 @@ public class KakaocertServiceExample {
 	}
 	
 	/*
-     * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명 상태를 확인합니다.
+     * 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
      */
 	@RequestMapping(value = "getVerifyAuthState", method = RequestMethod.GET)
     public String getVerifyAuthState(Model m) {
@@ -265,6 +267,8 @@ public class KakaocertServiceExample {
 	
 	/*
      * 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다.
+     * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
+     * - 본인인증 요청시 작성한 Token과 서명 검증시 반환되는 signedData의 동일여부를 확인하여 본인인증 검증을 완료합니다.
      */
 	@RequestMapping(value = "verifyAuth", method = RequestMethod.GET)
     public String verifyAuth(Model m) {
@@ -385,6 +389,7 @@ public class KakaocertServiceExample {
 	
 	/*
      * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
      */
 	@RequestMapping(value = "verifyCMS", method = RequestMethod.GET)
     public String verifyCMS(Model m) {
