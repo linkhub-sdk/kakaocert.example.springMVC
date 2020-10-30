@@ -40,7 +40,7 @@ public class KakaocertServiceExample {
 		
 		// AppToApp 인증요청 여부 
 		// true - AppToApp 인증방식, false - Talk Message 인증방식
-		boolean isAppUseYN = false;
+		boolean isAppUseYN = true;
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-9999");
@@ -49,7 +49,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19700101");
+		request.setReceiverBirthDay("19850101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("010111222");
@@ -189,7 +189,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19700101");
+		request.setReceiverBirthDay("19850101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("010111222");
@@ -305,7 +305,7 @@ public class KakaocertServiceExample {
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19700101");
+		request.setReceiverBirthDay("19850101");
 		
 		// 수신자 휴대폰번호	
 		request.setReceiverHP("010111222");
