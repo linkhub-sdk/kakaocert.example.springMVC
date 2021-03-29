@@ -11,13 +11,18 @@
     <p class="heading1">kakaocert SDK SpringMVC Example.</p>
     <br/>
     <fieldset class="fieldset1">
+        <legend>KakaoCert attribute</legend>
+        <ul>
+            <li><a href="CheckKakaoServiceAttribute">CheckKakaoServiceAttribute</a> - kakaoCert serivce 속성 확인</li>
+        </ul>
+    </fieldset>
+    <fieldset class="fieldset1">
         <legend>전자서명 API</legend>
         <ul>
             <li><a href="requestESign">requestESign</a> - 전자서명 요청</li>
             <li><a href="getESignState">getESignState</a> - 전자서명 서명상태 확인</li>
             <li><a href="verifyESign">verifyESign</a> - 전자서명 서명검증 (Talk Message 인증)</li>
             <li><a href="verifyESignApp">verifyESign</a> - 전자서명 서명검증 (App to App 인증)</li>
-            
         </ul>
     </fieldset>
     <fieldset class="fieldset1">
