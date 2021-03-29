@@ -1,5 +1,7 @@
 package com.kakaocert.example;
 
+import java.lang.reflect.Field;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,27 @@ public class KakaocertServiceExample {
 	// 파트너가 등록한 이용기관의 코드, (파트너 사이트에서 확인가능)
     @Value("#{EXAMPLE_CONFIG.ClientCode}")
     private String ClientCode;
+    
+    
+    @RequestMapping(value = "CheckKakaoServiceAttribute")
+    public String CheckKakaoServiceAttribute(Model m) {
+    	kakaoCert2ModelAttribute(m);
+		return "CheckKakaoServiceAttribute";
+    }
+
+	private void kakaoCert2ModelAttribute(Model m) {
+		Field[] fields = kakaocertService.getClass().getDeclaredFields();
+    	for (Field field : fields) {
+			field.setAccessible(true);
+			try {
+				m.addAttribute(field.getName(), field.get(kakaocertService));
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+	}
     
     /*
 	 * 카카오톡 사용자에게 전자서명을 요청합니다.
