@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kakaocert.api.KakaocertException;
 import com.kakaocert.api.KakaocertService;
+import com.kakaocert.api.ResponseCMS;
 import com.kakaocert.api.ResponseESign;
 import com.kakaocert.api.VerifyResult;
 import com.kakaocert.api.cms.RequestCMS;
@@ -66,7 +67,7 @@ public class KakaocertServiceExample {
 		boolean isAppUseYN = true;
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
-		request.setCallCenterNum("1600-9999");
+		request.setCallCenterNum("1600-1234");
 		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
@@ -206,7 +207,7 @@ public class KakaocertServiceExample {
 		RequestVerifyAuth request = new RequestVerifyAuth();
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
-		request.setCallCenterNum("1600-9999");
+		request.setCallCenterNum("1600-1234");
 		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
@@ -321,8 +322,12 @@ public class KakaocertServiceExample {
 		// 자동이체 출금동의 요청 정보 Object
 		RequestCMS request = new RequestCMS();
 		
+		// AppToApp 인증요청 여부 
+		// true - AppToApp 인증방식, false - Talk Message 인증방식
+		boolean isAppUseYN = true;
+		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
-		request.setCallCenterNum("1600-9999");
+		request.setCallCenterNum("1600-1234");
 		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
@@ -381,16 +386,18 @@ public class KakaocertServiceExample {
 		
 		try {
 			
-			String receiptID = kakaocertService.requestCMS(ClientCode, request);
+			ResponseCMS requestCMS = kakaocertService.requestCMS(ClientCode, request, isAppUseYN);
 			
-			m.addAttribute("Result", receiptID);
+			m.addAttribute("receiptId", requestCMS.getReceiptId());
+			m.addAttribute("tx_id", requestCMS.getTx_id());
+			
 			
 		} catch(KakaocertException ke) {
 			m.addAttribute("Exception", ke);
 			return "exception";
 		}
 		
-		return "result";
+		return "resultCMS";
 		   
 	}
 	
@@ -401,7 +408,7 @@ public class KakaocertServiceExample {
     public String getCMSState(Model m) {
         
 		// 출금동의 요청시 반환된 접수아이디 
-		String receiptID = "020090915424200001";
+		String receiptID = "021122910502200001";
 
         try {
             ResultCMS result = kakaocertService.getCMSState(ClientCode, receiptID);
@@ -414,7 +421,7 @@ public class KakaocertServiceExample {
     }
 	
 	/*
-     * 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+     * [Talk Message] 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
      * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
      * - 카카오페이 API 서비스 운영정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류처리됩니다.
      */
@@ -433,4 +440,27 @@ public class KakaocertServiceExample {
         }
         return "responseVerify";
     }
+	/*
+	 * [App to App] 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
+	 * - 서명검증시 전자서명 데이터 전문(signedData)이 반환됩니다.
+	 * - 카카오페이 API 서비스 운영정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류처리됩니다.
+	 */
+	@RequestMapping(value = "verifyCMSApp", method = RequestMethod.GET)
+	public String verifyCMSApp(Model m) {
+		
+		// 출금동의 요청시 반환된 접수아이디 
+		String receiptID = "020090915424200001";
+		
+		// AppToApp 앱스킴 성공처리시 반환되는 서명값(iOS-sig, Android-signature)
+		String signature = "abc";
+		
+		try {
+			VerifyResult result = kakaocertService.verifyCMS(ClientCode, receiptID, signature);
+			m.addAttribute("result", result);
+		} catch(KakaocertException ke) {
+			m.addAttribute("Exception", ke);
+			return "exception";
+		}
+		return "responseVerify";
+	}
 }

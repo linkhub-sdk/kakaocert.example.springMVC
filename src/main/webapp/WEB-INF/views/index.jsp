@@ -38,7 +38,8 @@
         <ul>
             <li><a href="requestCMS">requestCMS</a> - 자동이체 출금동의 요청</li>
             <li><a href="getCMSState">getCMSState</a> - 자동이체 출금동의 서명상태 확인</li>
-            <li><a href="verifyCMS">verifyCMS</a> - 자동이체 출금동의 서명검증</li>
+            <li><a href="verifyCMS">verifyCMS</a> - 자동이체 출금동의 서명검증 (Talk Message 인증)</li>
+            <li><a href="verifyCMSApp">verifyCMS</a> - 자동이체 출금동의 서명검증 (App to App 인증)</li>
         </ul>
     </fieldset>
 </div>
