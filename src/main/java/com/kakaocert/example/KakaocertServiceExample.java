@@ -64,19 +64,22 @@ public class KakaocertServiceExample {
 		
 		// AppToApp 인증요청 여부 
 		// true - AppToApp 인증방식, false - Talk Message 인증방식
-		boolean isAppUseYN = true;
+		boolean isAppUseYN = false;
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-1234");
+		
+		// 고객센터명  , 카카오톡 인증메시지 중 "고객센터명" 항목에 표시
+		request.setCallCenterName("고객센터명");
 		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19850101");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("010111222");
+		request.setReceiverHP("01012341234");
 		
 		// 수신자 성명	
 		request.setReceiverName("홍길동");
@@ -139,7 +142,7 @@ public class KakaocertServiceExample {
     public String getESignResult(Model m) {
         
 		// 전자서명 요청시 반환된 접수아이디 
-		String receiptID = "020090915342900001";
+		String receiptID = "022040610121600001";
 
         try {
             ResultESign result = kakaocertService.getESignState(ClientCode, receiptID);
@@ -208,15 +211,18 @@ public class KakaocertServiceExample {
 		
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-1234");
+
+		// 고객센터명  , 카카오톡 인증메시지 중 "고객센터명" 항목에 표시
+		request.setCallCenterName("고객센터명");
 		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19850101");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("010111222");
+		request.setReceiverHP("01012341234");
 		
 		// 수신자 성명	
 		request.setReceiverName("홍길동");
@@ -279,7 +285,7 @@ public class KakaocertServiceExample {
     public String getVerifyAuthState(Model m) {
         
 		// 본인인증 요청시 반환된 접수아이디 
-		String receiptID = "020090915411700001";
+		String receiptID = "022040610142700001";
 
         try {
             ResultVerifyAuth result = kakaocertService.getVerifyAuthState(ClientCode, receiptID);
@@ -329,14 +335,17 @@ public class KakaocertServiceExample {
 		// 고객센터 전화번호	, 카카오톡 인증메시지 중 "고객센터" 항목에 표시
 		request.setCallCenterNum("1600-1234");
 		
+		// 고객센터명  , 카카오톡 인증메시지 중 "고객센터명" 항목에 표시
+		request.setCallCenterName("고객센터명");
+		
 		// 인증요청 만료시간(초), 최대값 : 1000,	인증요청 만료시간(초) 내에 미인증시, 만료 상태로 처리됨
 		request.setExpires_in(60);
 		
 		// 수신자 생년월일, 형식 : YYYYMMDD
-		request.setReceiverBirthDay("19850101");
+		request.setReceiverBirthDay("19700101");
 		
 		// 수신자 휴대폰번호	
-		request.setReceiverHP("010111222");
+		request.setReceiverHP("01012341234");
 		
 		// 수신자 성명	
 		request.setReceiverName("홍길동");
@@ -408,7 +417,7 @@ public class KakaocertServiceExample {
     public String getCMSState(Model m) {
         
 		// 출금동의 요청시 반환된 접수아이디 
-		String receiptID = "021122910502200001";
+		String receiptID = "022040610145900001";
 
         try {
             ResultCMS result = kakaocertService.getCMSState(ClientCode, receiptID);

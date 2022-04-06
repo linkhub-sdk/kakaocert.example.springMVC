@@ -25,6 +25,7 @@
             	
             	<li>expires_in (인증요청 만료시간(초)	) : ${result.expires_in}</li>
                 <li>callCenterNum(고객센터 전화번호) : ${result.callCenterNum}</li>
+                <li>callCenterName(고객센터명) : ${result.callCenterName}</li>
                 <li>tmstitle (인증요청 메시지 제목) : ${result.tmstitle}</li>
                 <li>tmsmessage (인증요청 메시지 부가내용) : ${result.tmsmessage}</li>
                 <li>allowSimpleRegistYN	(은행계좌 실명확인 생략여부) : ${result.allowSimpleRegistYN}</li>
