@@ -17,6 +17,7 @@
             <li>secretKey - ${_secretKey}</li>
             <li>IPRestrictOnOff - ${isIPRestrictOnOff}</li>
             <li>useStaticIP - ${useStaticIP}</li>
+            <li>useStaticIP - ${useLocalTimeYN}</li>
         </ul>
     </fieldset>
 </div>

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="content">
-    <p class="heading1">State</p>
+    <p class="heading1">Response</p>
     <br/>
     <fieldset class="fieldset1">
         <legend>${requestScope['javax.servlet.forward.request_uri']}</legend>
