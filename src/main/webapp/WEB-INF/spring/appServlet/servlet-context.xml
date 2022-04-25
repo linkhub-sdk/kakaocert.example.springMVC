@@ -29,8 +29,9 @@
         LinkID : 링크허브에서 발급받은 파트너 링크아이디.
         SecretKey : 링크허브에서 발급받는 비밀키.
         ClientCode : 이용기관코드, 파트너가 등록한 이용기관의 코드, (파트너 사이트에서 확인가능)
-        IPRestrictOnOff : 인증토큰 발급 IP 제한 On/Off, ture-제한기능 사용(기본값-권장),  false-제한기능 미사용
+        IPRestrictOnOff : 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
        	useStaticIP : 카카오써트 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
+        UseLocalTimeYN : 로컬시스템 시간 사용여부 true-사용, false-미사용, 기본값(true)
     -->
     <util:properties id="EXAMPLE_CONFIG">
         <beans:prop key="LinkID">TESTER</beans:prop>
@@ -38,6 +39,7 @@
         <beans:prop key="ClientCode">020040000001</beans:prop>
         <beans:prop key="IsIPRestrictOnOff">true</beans:prop>
         <beans:prop key="UseStaticIP">false</beans:prop>
+        <beans:prop key="UseLocalTimeYN">true</beans:prop>
     </util:properties>
     
 	<beans:beans>
@@ -47,6 +49,7 @@
             <beans:property name="secretKey" value="#{EXAMPLE_CONFIG.SecretKey}"/>
             <beans:property name="IPRestrictOnOff" value="#{EXAMPLE_CONFIG.IsIPRestrictOnOff}"/>
             <beans:property name="useStaticIP" value="#{EXAMPLE_CONFIG.UseStaticIP}"/>
+            <beans:property name="useLocalTimeYN" value = "#{EXAMPLE_CONFIG.UseLocalTimeYN}"/>
         </beans:bean>
 
     </beans:beans>
