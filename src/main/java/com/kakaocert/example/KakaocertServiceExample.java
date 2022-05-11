@@ -327,7 +327,7 @@ public class KakaocertServiceExample {
 
         // AppToApp 인증요청 여부
         // true - AppToApp 인증방식, false - Talk Message 인증방식
-        boolean isAppUseYN = true;
+        boolean isAppUseYN = false;
 
         // 고객센터 전화번호 , 카카오톡 인증메시지 중 "고객센터" 항목에 표시
         request.setCallCenterNum("1600-1234");
