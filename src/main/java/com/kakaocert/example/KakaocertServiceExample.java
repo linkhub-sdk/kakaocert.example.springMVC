@@ -353,7 +353,7 @@ public class KakaocertServiceExample {
         // 계좌번호, 이용기관은 사용자가 식별가능한 범위내에서 계좌번호의 일부를 마스킹 처리할 수 있음 예시) 371-02-6***85
         request.setBankAccountNum("9-4**4-1234-58");
 
-        // 은행코드
+        // 참가기관 코드
         request.setBankCode("004");
 
         // 납부자 식별번호, 이용기관에서 부여한 고객식별번호
