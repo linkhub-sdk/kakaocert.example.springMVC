@@ -141,7 +141,7 @@ public class KakaocertServiceExample {
     public String getESignResult(Model m) {
 
         // 전자서명 요청시 반환된 접수아이디
-        String receiptID = "022040610121600001";
+        String receiptID = "022051115151400001";
 
         try {
             ResultESign result = kakaocertService.getESignState(ClientCode, receiptID);
@@ -162,7 +162,7 @@ public class KakaocertServiceExample {
     public String verfiyESign(Model m) {
 
         // 전자서명 요청시 반환된 접수아이디
-        String receiptID = "020090915342900001";
+        String receiptID = "022051115151400001";
 
         try {
             VerifyResult result = kakaocertService.verifyESign(ClientCode, receiptID);
@@ -183,7 +183,7 @@ public class KakaocertServiceExample {
     public String verfiyESignApp(Model m) {
 
         // 전자서명 요청시 반환된 접수아이디
-        String receiptID = "020090915342900001";
+        String receiptID = "022050915342900001";
 
         // AppToApp 앱스킴 성공처리시 반환되는 서명값(iOS-sig, Android-signature)
         String signature = "abc";
@@ -238,7 +238,7 @@ public class KakaocertServiceExample {
 
         // 원문, 보안을 위해 1회용으로 생성
         // 인증완료시, getVerifyAuthResult API의 returnToken 항목값으로 반환
-        request.setToken("20200504-01");
+        request.setToken("20220504-01");
 
         /*
          * 은행계좌 실명확인 생략여부	
@@ -282,7 +282,7 @@ public class KakaocertServiceExample {
     public String getVerifyAuthState(Model m) {
 
         // 본인인증 요청시 반환된 접수아이디
-        String receiptID = "022040610142700001";
+        String receiptID = "022050610142700001";
 
         try {
             ResultVerifyAuth result = kakaocertService.getVerifyAuthState(ClientCode, receiptID);
@@ -304,7 +304,7 @@ public class KakaocertServiceExample {
     public String verifyAuth(Model m) {
 
         // 본인인증 요청시 반환된 접수아이디
-        String receiptID = "020090915411700001";
+        String receiptID = "022050915411700001";
 
         try {
             VerifyResult result = kakaocertService.verifyAuth(ClientCode, receiptID);
@@ -357,7 +357,7 @@ public class KakaocertServiceExample {
         request.setBankCode("004");
 
         // 납부자 식별번호, 이용기관에서 부여한 고객식별번호
-        request.setClientUserID("20200504-001");
+        request.setClientUserID("20220504-001");
 
         // 별칭코드, 이용기관이 생성한 별칭코드 (파트너 사이트에서 확인가능)
         // 카카오톡 인증메시지 중 "요청기관" 항목에 표시
@@ -413,7 +413,7 @@ public class KakaocertServiceExample {
     public String getCMSState(Model m) {
 
         // 출금동의 요청시 반환된 접수아이디
-        String receiptID = "022040610145900001";
+        String receiptID = "022050610145900001";
 
         try {
             ResultCMS result = kakaocertService.getCMSState(ClientCode, receiptID);
@@ -434,7 +434,7 @@ public class KakaocertServiceExample {
     public String verifyCMS(Model m) {
 
         // 출금동의 요청시 반환된 접수아이디
-        String receiptID = "020090915424200001";
+        String receiptID = "022050915424200001";
 
         try {
             VerifyResult result = kakaocertService.verifyCMS(ClientCode, receiptID);
@@ -455,7 +455,7 @@ public class KakaocertServiceExample {
     public String verifyCMSApp(Model m) {
 
         // 출금동의 요청시 반환된 접수아이디
-        String receiptID = "020090915424200001";
+        String receiptID = "022050915424200001";
 
         // AppToApp 앱스킴 성공처리시 반환되는 서명값(iOS-sig, Android-signature)
         String signature = "abc";
